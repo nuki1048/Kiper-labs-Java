@@ -1,13 +1,21 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+public class Main {
+    public static void main(String[] args) {
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+        Quadrilateral[] figures = {
+                new InscribedQuadrilateral(5,6,5,6),
+                new Trapezoid(10, 6, 4, 7, 5),
+                new Parallelogram(8, 5, 4),
+                new Rhombus(6, 5),
+                new Rectangle(4, 7),
+                new Square(5),
+                new Kite(4,4,6,8)
+        };
+
+        for (Quadrilateral q : figures) {
+            System.out.println(q);
+            System.out.println("Периметр = " + q.perimeter());
+            System.out.println("Площа = " + q.area());
+            System.out.println("--------------------------");
+        }
     }
 }
