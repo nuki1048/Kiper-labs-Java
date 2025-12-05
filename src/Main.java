@@ -1,13 +1,66 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+import java.util.Scanner;
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+class Lab1 {
+
+    Lab1() {
+        System.out.println("Лабораторна робота №1:");
+        Task1();
+        Task2();
+    }
+
+    /* ==================================================
+       ЗАВДАННЯ 1.
+       Записати арифметичний вираз алгоритмічною мовою.
+    =================================================== */
+    void Task1() {
+        System.out.println("\n---= ЗАВДАННЯ 1 =---");
+
+        // Довільні значення змінних, як у методичці
+        double x = 1.2;
+        double a = 2.1;
+        double c = 0.9;
+        double L;
+
+        // Формула:
+        // L = ( sqrt(e^x − cos^4(x^2 * a^5)) + arctg^4(a − x^5) ) / ( e * sqrt(a + x*c^4) )
+
+        double numerator =
+                Math.sqrt(Math.exp(x) - Math.pow(Math.cos(Math.pow(x, 2) * Math.pow(a, 5)), 4))
+                        + Math.pow(Math.atan(a - Math.pow(x, 5)), 4);
+
+        double denominator =
+                Math.exp(1) * Math.sqrt(a + x * Math.pow(c, 4));
+
+        L = numerator / denominator;
+
+        System.out.println("x = " + x + ", a = " + a + ", c = " + c);
+        System.out.println("L = " + L);
+    }
+
+    /* ==================================================
+       ЗАВДАННЯ 2.
+       Тіло рухається за законом:
+           S = t^3 – 3t^2 + 2
+       Обчислити швидкість — похідну:
+           v = 3t^2 – 6t
+       Значення t вводиться з клавіатури.
+    =================================================== */
+    void Task2() {
+        System.out.println("\n---= ЗАВДАННЯ 2 =---");
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Введіть значення t: ");
+        double t = sc.nextDouble();
+
+        // Похідна швидкості
+        double v = 3 * t * t - 6 * t;
+
+        System.out.println("Швидкість тіла в момент часу t = " + t + " дорівнює v = " + v);
+    }
+
+    // Точка входу
+    public static void main(String[] args) {
+        new Lab1();
     }
 }
