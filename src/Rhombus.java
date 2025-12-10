@@ -1,13 +1,21 @@
-public class Rhombus extends Parallelogram {
+class Rhombus extends Parallelogram {
+
+    public Rhombus() {
+        this(5, 3);
+    }
 
     public Rhombus(double side, double height) {
         super(side, side, height);
         this.name = "ромб";
     }
 
-    @Override
-    public double area() {
-        return a * height;
+    public Rhombus(Quadrilateral base, double height) {
+        super(base, height);
+        this.name = "ромб";
+    }
+
+    public Rhombus(Rhombus other) {
+        this(other.a, other.height);
     }
 
     @Override

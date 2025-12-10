@@ -1,7 +1,16 @@
-public class InscribedQuadrilateral extends ConvexQuadrilateral {
+class InscribedQuadrilateral extends ConvexQuadrilateral {
+
+    public InscribedQuadrilateral() {
+        this(1, 1, 1, 1);
+    }
 
     public InscribedQuadrilateral(double a, double b, double c, double d) {
         super(a, b, c, d, "вписуваний чотирикутник");
+    }
+
+    public InscribedQuadrilateral(Quadrilateral base) {
+        super(base);
+        this.name = "вписуваний чотирикутник";
     }
 
     @Override
