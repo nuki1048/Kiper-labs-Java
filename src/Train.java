@@ -5,5 +5,7 @@ public class Train extends Being implements Walking {
     }
 
     @Override
-    public void walk() { System.out.println(name + " рухається по рейках."); }
+    public void walk() {
+        System.out.println(name + " рухається по рейках.");
+    }
 }

@@ -5,11 +5,17 @@ public class Human extends Being implements Walking, Running, Swimming {
     }
 
     @Override
-    public void walk() { System.out.println(name + " йде пішки."); }
+    public void walk() {
+        System.out.println(name + " йде пішки.");
+    }
 
     @Override
-    public void run() { System.out.println(name + " біжить."); }
+    public void run() {
+        System.out.println(name + " біжить.");
+    }
 
     @Override
-    public void swim() { System.out.println(name + " пливе."); }
+    public void swim() {
+        System.out.println(name + " пливе.");
+    }
 }

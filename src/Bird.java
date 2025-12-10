@@ -5,11 +5,17 @@ public class Bird extends Being implements Walking, Running, Flying {
     }
 
     @Override
-    public void walk() { System.out.println(name + " пересувається по землі."); }
+    public void walk() {
+        System.out.println(name + " рухається по землі.");
+    }
 
     @Override
-    public void run() { System.out.println(name + " перебігає."); }
+    public void run() {
+        System.out.println(name + " перебігає.");
+    }
 
     @Override
-    public void fly() { System.out.println(name + " летить у небі."); }
+    public void fly() {
+        System.out.println(name + " летить у небі.");
+    }
 }

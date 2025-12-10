@@ -5,5 +5,7 @@ public class Plane extends Being implements Flying {
     }
 
     @Override
-    public void fly() { System.out.println(name + " виконує політ."); }
+    public void fly() {
+        System.out.println(name + " виконує політ.");
+    }
 }

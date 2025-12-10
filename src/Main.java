@@ -9,19 +9,20 @@ public class Main {
                 new Train("Інтерсіті", 160)
         };
 
+        System.out.println("=== Об'єкти ===");
         for (Being b : arr) {
             System.out.println(b);
         }
 
-        System.out.println("\n=== Дії ===");
-        ((Human)arr[0]).walk();
-        ((Human)arr[0]).runDefault();
+        System.out.println("\n=== Динамічні дії ===");
 
-        ((Bird)arr[1]).fly();
-        ((Bird)arr[1]).flyDefault();
-
-        ((Animal)arr[2]).swim();
-        ((Animal)arr[2]).swimDefault();
+        for (Being b : arr) {
+            if (b instanceof Walking w) w.walk();
+            if (b instanceof Running r) r.runDefault();
+            if (b instanceof Swimming s) s.swimDefault();
+            if (b instanceof Flying f) f.flyDefault();
+            System.out.println("-----------------------");
+        }
 
         System.out.println("\n=== Порівняння швидкостей ===");
         System.out.println(arr[0].compareTo(arr[1]));
@@ -29,5 +30,11 @@ public class Main {
         System.out.println("\n=== Клонування ===");
         Being clone = arr[2].clone();
         System.out.println("Клон: " + clone);
+
+        System.out.println("\n=== Static методи інтерфейсів ===");
+        Walking.info();
+        Running.info();
+        Swimming.info();
+        Flying.info();
     }
 }
