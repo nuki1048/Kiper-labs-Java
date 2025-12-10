@@ -6,6 +6,8 @@ import java.time.temporal.ChronoUnit;
 class Lab6 {
 
     int argc;
+    String userName;
+    String userSurname;
 
     Lab6() {
         this(new Scanner(System.in).nextLine().split(" "));
@@ -15,7 +17,7 @@ class Lab6 {
 
         argc = args.length;
 
-        printUserArgs(args); // <-- НОВОЕ
+        printUserArgs(args);
 
         if (argc == 0) {
             printDescription();
@@ -24,11 +26,14 @@ class Lab6 {
             handleArguments(args);
         }
 
-        // --- Нове ТЗ ---
+        // ✅ НОВА ЛОГІКА ТЗ
         processUserName();
-        processBirthday();
-        processVariantInput();
+        processBirthdayAndGreeting();
     }
+
+    // ======================================================
+    //  Вивід введених аргументів
+    // ======================================================
 
     void printUserArgs(String[] args) {
         System.out.println("Користувач ввів аргументи:");
@@ -43,6 +48,10 @@ class Lab6 {
         }
         System.out.println();
     }
+
+    // ======================================================
+    //  СТАРА ЛОГІКА АРГУМЕНТІВ
+    // ======================================================
 
     void handleArguments(String[] args) {
         for (int i = 0; i < argc; i++) {
@@ -123,25 +132,26 @@ class Lab6 {
         );
     }
 
+    // ======================================================
+    // ✅ НОВА ЛОГІКА: ІМʼЯ + ДЕНЬ НАРОДЖЕННЯ + ПРИВІТАННЯ
+    // ======================================================
 
     void processUserName() {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("\nВведіть ім'я: ");
-        String name = sc.nextLine();
+        userName = sc.nextLine();
 
         System.out.print("Введіть прізвище: ");
-        String surname = sc.nextLine();
-
-        System.out.println("\nВітаю, " + name + " " + surname + "!");
+        userSurname = sc.nextLine();
     }
 
-    void processBirthday() {
+    void processBirthdayAndGreeting() {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Введіть дату народження (формат: dd.MM.yyyy): ");
-
         String dateStr = sc.nextLine();
+
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
         try {
@@ -157,25 +167,14 @@ class Lab6 {
             long daysLeft = ChronoUnit.DAYS.between(today, nextBirthday);
 
             if (daysLeft == 0) {
-                System.out.println("🎉 Вітаємо з днем народження! 🎉");
+                System.out.println("\n🎉 Вітаємо з Днем народження, " +
+                        userName + " " + userSurname + "! 🎉");
             } else {
                 System.out.println("До дня народження залишилося: " + daysLeft + " днів.");
             }
 
         } catch (Exception e) {
-            System.out.println("Невірний формат дати!");
-        }
-    }
-
-    void processVariantInput() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("\nВведіть будь-яке число (логіка варіанта може бути розширена): ");
-        try {
-            int val = Integer.parseInt(sc.nextLine());
-            System.out.println("Ви ввели число: " + val);
-        } catch (Exception e) {
-            System.out.println("Це не число.");
+            System.out.println("❌ Невірний формат дати!");
         }
     }
 
